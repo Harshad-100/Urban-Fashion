@@ -17,6 +17,14 @@ app.use(
     express.static("uploads")
 );
 
+// const db = new sqlite3.Database("./data/store.db");
+
+const fs = require("fs");
+
+if (!fs.existsSync("./data")) {
+    fs.mkdirSync("./data");
+}
+
 const db = new sqlite3.Database("./data/store.db");
 
 const storage = multer.diskStorage({
