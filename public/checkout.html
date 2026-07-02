@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout - Urban Fashion</title>
+
+    <style>
+        body{
+
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+margin:0;
+
+min-height:100vh;
+
+display:flex;
+flex-direction:column;
+
+}
+
+        .checkout-box{
+
+background:white;
+padding:30px;
+border-radius:12px;
+width:350px;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+
+margin:60px auto;
+
+}
+
+        h1{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-bottom:15px;
+            border:1px solid #ccc;
+            border-radius:6px;
+            box-sizing:border-box;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:black;
+            color:white;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#333;
+        }
+    </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="checkout-box">
+
+    <h1>Checkout</h1>
+
+<input id="fullName" type="text" placeholder="Full Name" autocomplete="off">
+
+<input id="address" type="text" placeholder="Address" autocomplete="off">
+
+<input id="city" type="text" placeholder="City" autocomplete="off"> 
+
+<input id="phone" type="text" placeholder="Phone Number" autocomplete="off">
+
+    <button onclick="placeOrder()">
+        Place Order
+    </button>
+
+</div>
+
+<script>
+
+   
+
+async function placeOrder(){
+
+     const fullName = document.getElementById("fullName").value.trim();
+const address = document.getElementById("address").value.trim();
+const city = document.getElementById("city").value.trim();
+const phone = document.getElementById("phone").value.trim();
+
+if(!fullName || !address || !city || !phone){
+
+    showToast("Please fill all the details.","error");
+
+    return;
+
+}
+
+    const user =
+    JSON.parse(
+        localStorage.getItem("loggedUser")
+    );
+
+    if(!user){
+
+      showToast("Please Login First","error");  
+
+        localStorage.setItem("redirectAfterLogin","checkout.html");
+
+window.location.href = "login.html";
+
+        return;
+    }
+
+    const cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        total += Number(
+            item.price.replace("₹","")
+        );
+
+    });
+
+
+
+    const response =
+    await fetch("/api/order",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            customer_name:user.name,
+
+            total_amount:total
+
+        })
+
+    });
+
+    const data =
+    await response.json();
+
+    showToast(data.message);
+
+  if(data.success){
+
+    showToast("🎉 Order Placed Successfully! Redirecting...");
+
+    localStorage.removeItem("cart");
+
+
+    setTimeout(()=>{
+
+        window.location.href =
+        "index.html";
+
+    },2000);
+
+}  
+
+}
+
+</script>
+
+<footer>
+
+    <h3>Urban Fashion</h3>
+
+    <p>
+        Premium Fashion For Modern Lifestyle
+    </p>
+
+    <p>
+        © 2026 Urban Fashion
+    </p>
+
+</footer>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

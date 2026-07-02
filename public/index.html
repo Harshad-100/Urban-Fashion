@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Fashion</title>
+    <link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- <nav>
+    <div class="logo">Urban Fashion</div>
+
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Cart (<span id="cart-count">0</span>)</a>
+    </div>
+</nav> -->
+
+<nav>
+  <div class="logo">Urban Fashion</div>
+
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    <a id="login-link" href="login.html">Login</a>
+    <a id="register-link" href="register.html">Register</a>
+ 
+ <a id="logout-link"
+href="javascript:void(0)"
+onclick="logout()">
+Logout
+</a>
+
+</div>
+</nav>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            SUMMER COLLECTION 2026
+        </h1>
+
+        <p>
+            Premium Fashion For Modern Lifestyle
+        </p>
+
+        <button>
+            Shop Now
+        </button>
+
+    </div>
+
+</section>
+
+<section class="featured">
+
+    <h2>Featured Categories</h2>
+
+    <div class="categories">
+
+        <div class="category">
+            👔
+            <h3>Men</h3>
+        </div>
+
+        <div class="category">
+            👗
+            <h3>Women</h3>
+        </div>
+
+        <div class="category">
+            👟
+            <h3>Footwear</h3>
+        </div>
+
+        <div class="category">
+            👜
+            <h3>Accessories</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="filters">
+
+<button onclick="filterProducts('All')">
+All
+</button>
+
+<button onclick="filterProducts('Men')">
+Men
+</button>
+
+<button onclick="filterProducts('Women')">
+Women
+</button>
+
+<button onclick="filterProducts('Footwear')">
+Footwear
+</button>
+
+<button onclick="filterProducts('Accessories')">
+Accessories
+</button>
+
+</div>
+
+
+<section class="products">
+
+    <h2>Trending Products</h2>
+    <input
+    type="text"
+    id="search"
+    placeholder="Search Products...">
+
+   <section class="featured-section">
+
+    <h2>
+        Featured Products
+    </h2>
+
+    <p>
+        Handpicked Fashion Picks
+    </p>
+
+</section>
+
+<section class="featured-section">
+
+    <h2>
+        New Arrivals
+    </h2>
+
+    <p>
+        Latest Products Added By Admin
+    </p>
+
+</section>
+   
+    <div id="product-container">
+
+    </div>
+
+</section>
+
+<script src="app.js"></script>
+
+
+<footer>
+
+    <h3>Urban Fashion</h3>
+
+    <p>
+        Premium Fashion For Modern Lifestyle
+    </p>
+
+    <p>
+        © 2026 Urban Fashion
+    </p>
+
+</footer>
+
+<div id="toast"></div>
+
+</body>
+</html>

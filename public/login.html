@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<head>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<div class="auth-container">
+<h1>Login</h1>
+
+<input
+type="email"
+id="email"
+placeholder="Email"
+autocomplete="off">
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+autocomplete="new-password">
+
+<button onclick="loginUser()">
+Login
+</button>
+
+</div>
+
+<footer>
+
+    <h3>Urban Fashion</h3>
+
+    <p>
+        Premium Fashion For Modern Lifestyle
+    </p>
+
+    <p>
+        © 2026 Urban Fashion
+    </p>
+
+</footer>
+
+<script>
+
+async function loginUser(){
+
+    const email =
+    document.getElementById("email").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    const response =
+    await fetch("/api/login",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+            email,
+            password
+        })
+
+    });
+
+    const data =
+    await response.json();
+
+//   showToast("Welcome Back! Redirecting...");
+
+if(data.success){
+
+    localStorage.setItem(
+        "loggedUser",
+        JSON.stringify(data.user)
+    );
+
+    showToast("Login Successful!  Redirecting...");
+
+    setTimeout(()=>{
+
+    const redirect =
+    localStorage.getItem("redirectAfterLogin");
+
+    if(redirect){
+
+        localStorage.removeItem("redirectAfterLogin");
+
+        window.location.href = redirect;
+
+    }else{
+
+        window.location.href = "index.html";
+
+    }
+
+},2000);
+
+}
+
+
+}
+
+</script>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

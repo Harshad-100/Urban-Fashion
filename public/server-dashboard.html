@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Urban Fashion Server Dashboard</title>
+
+<link rel="stylesheet" href="server-dashboard.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>URBAN FASHION LOCAL SERVER</h1>
+
+<p>Mini Data Center Dashboard</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>SERVER STATUS</h3>
+
+<h2 id="serverStatus">RUNNING</h2>
+
+</div>
+
+<div class="card">
+
+<h3>DATABASE</h3>
+
+<h2 id="databaseStatus">CONNECTED</h2>
+
+</div>
+
+<div class="card">
+
+<h3>TOTAL USERS</h3>
+
+<h2 id="totalUsers">0</h2>
+
+</div>
+
+<div class="card">
+
+<h3>TOTAL PRODUCTS</h3>
+
+<h2 id="totalProducts">0</h2>
+
+</div>
+
+<div class="card">
+
+<h3>TOTAL ORDERS</h3>
+
+<h2 id="totalOrders">0</h2>
+
+</div>
+
+</div>
+
+<h2 class="title">SERVER INFORMATION</h2>
+
+<div class="card">
+
+<h3>SERVER UPTIME</h3>
+
+<h2 id="serverUptime">00:00:00</h2>
+
+</div>
+
+<table>
+
+<tr>
+<td>Server Status</td>
+<td>🟢 Running</td>
+</tr>
+
+<tr>
+<td>Database</td>
+<td>🟢 SQLite Connected</td>
+</tr>
+
+<tr>
+<td>Backend</td>
+<td>Node.js + Express</td>
+</tr>
+
+<tr>
+<td>Database Engine</td>
+<td>SQLite3</td>
+</tr>
+
+<tr>
+<td>Environment</td>
+<td>Development</td>
+</tr>
+
+<tr>
+<td>Port</td>
+<td>3000</td>
+</tr>
+
+</table>
+
+<h2 class="title">LIVE SERVER LOG</h2>
+
+<div class="logs">
+
+<div id="serverLogs">
+
+<p>Server Started...</p>
+
+</div>
+
+</div>
+
+<h2 class="title">
+REGISTERED USERS
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Password (Hashed)</th>
+</tr>
+
+</thead>
+
+<tbody id="usersTable">
+
+</tbody>
+
+</table>
+
+<h2 class="title">RECENT USERS</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+
+</tr>
+
+</thead>
+
+<tbody id="recentUsers">
+
+</tbody>
+
+</table>
+
+
+<h2 class="title">RECENT ORDERS</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Customer</th>
+<th>Amount</th>
+
+</tr>
+
+</thead>
+
+<tbody id="recentOrders">
+
+</tbody>
+
+</table>
+
+
+<h2 class="title">RECENT PRODUCTS</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Product</th>
+<th>Price</th>
+
+</tr>
+
+</thead>
+
+<tbody id="recentProducts">
+
+</tbody>
+
+</table>
+
+<h3 id="lastUpdated">
+Last Updated :
+</h3>
+
+<script src="server-dashboard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<script>
+
+if(
+localStorage.getItem(
+"isAdmin"
+)!=="true"
+){
+
+window.location.href =
+"admin-login.html";
+
+}
+
+</script>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Urban Fashion Admin
+    </div>
+
+    <div class="menu">
+
+        <a href="index.html">
+            Store
+        </a>
+
+        <a href="admin.html">
+            Dashboard
+        </a>
+
+    </div>
+
+</nav>
+
+<div class="admin-container">
+
+<h1>Dashboard</h1>
+
+<div class="stats">
+
+    <div class="card">
+        <h3>Total Users</h3>
+        <p id="total-users">0</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Orders</h3>
+        <p id="total-orders">0</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Revenue</h3>
+        <p id="total-revenue">₹0</p>
+    </div>
+
+    <div class="card">
+    <h3>Total Products</h3>
+    <p id="total-products">0</p>
+</div>
+
+</div>
+
+<h2>Recent Users</h2>
+<div id="recent-users"></div>
+
+<h2>Recent Orders</h2>
+<div id="recent-orders"></div>
+
+<h2>Recent Products</h2>
+<div id="recent-products"></div>
+
+<h2>Product Management</h2>
+
+<input
+id="product-name"
+placeholder="Product Name">
+
+<input
+id="product-price"
+placeholder="Price">
+
+<input
+id="product-category"
+placeholder="Category">
+
+<input
+type="file"
+id="product-image">
+
+<button onclick="addProduct()">
+Add Product
+</button>
+
+<div id="products"></div>
+
+</div>
+
+<script src="admin.js"></script>
+
+<div id="toast"></div>
+
+</body>
+
+</html>
